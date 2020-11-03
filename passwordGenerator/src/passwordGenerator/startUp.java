@@ -48,6 +48,7 @@ public class startUp {
 				int temp = Integer.parseInt(length.getText());
 				passwordGenClass gen = new passwordGenClass(incLowercase.isSelected(), incCapital.isSelected(), incNums.isSelected(), incSpecials.isSelected(), temp);
 				System.out.println(gen.toString());
+				gen.genPassword();
 			}
 		});
 		
