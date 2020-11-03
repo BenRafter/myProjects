@@ -1,6 +1,7 @@
 package passwordGenerator;
 
-import java.util.Random;
+import java.util.ArrayList;
+
 
 public class passwordGenClass {
 	Boolean hasLowercase;
@@ -8,6 +9,7 @@ public class passwordGenClass {
 	Boolean hasNumbers;
 	Boolean hasSpecials;
 	int pwordLength;
+	ArrayList<charGenerator> genList = new ArrayList<charGenerator>();
 	
 	public passwordGenClass(Boolean lower, Boolean upper, Boolean numbers, Boolean specials, int len) {
 		
@@ -16,6 +18,26 @@ public class passwordGenClass {
 		hasNumbers = numbers;
 		hasSpecials = specials;
 		pwordLength = len;
+		setgenList();
+	}
+	
+	private void setgenList() {
+		if(hasLowercase == true) {
+			genLower temp0 = new genLower();
+			genList.add(temp0);
+		}
+		if(hasUppercase == true) {
+			genUpper temp1 = new genUpper();
+			genList.add(temp1);
+		}
+		if(hasNumbers == true) {
+			genNumber temp2 = new genNumber();
+			genList.add(temp2);
+		}
+		if(hasSpecials == true) {
+			genSpecial temp3 = new genSpecial();
+			genList.add(temp3);
+		}
 	}
 	
 	public String toString() {
@@ -23,37 +45,12 @@ public class passwordGenClass {
 		return ret;
 	}
 	
-	public char getRandomLower() {
-		Random r = new Random();
-		char c = (char)(r.nextInt(26) + 'a');
-		return c;
-	}
-	
-	public char getRandomUpper() {
-		Random r = new Random();
-		char c = (char)(r.nextInt(26) + 'a');
-		return Character.toUpperCase(c);
-	}
-	
-	public char getRandomNumber() {
-		Random r = new Random();
-		int x = r.nextInt(11);
-		return (char)(x+'0');
-	}
-	
-	public char getRandomSpecial() {
-		String alphabet = "!@#$%^&*()_+";
-		Random r = new Random();
-		int x = r.nextInt(13);
-		return alphabet.charAt(x);
-	}
 	
 	public String genPassword() {
 		String ret = "";
-		System.out.println(getRandomLower());
-		System.out.println(getRandomUpper());
-		System.out.println(getRandomNumber());
-		System.out.println(getRandomSpecial());
+		for(int i = 0; i < genList.size(); i++) {
+			System.out.println(genList.get(i).genChar());
+		}
 		return ret;
 	}
 }

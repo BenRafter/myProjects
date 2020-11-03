@@ -2,12 +2,13 @@ package passwordGenerator;
 
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.text.NumberFormat;
 
 import javax.swing.JButton;
+import javax.swing.JFormattedTextField;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JRadioButton;
-import javax.swing.JTextField;
 import javax.swing.WindowConstants;
 
 public class startUp {
@@ -36,7 +37,7 @@ public class startUp {
 		incSpecials.setBounds(50, 300, 400, 50);
 		f.add(incSpecials);
 		
-		JTextField length = new JTextField("Length");
+		JFormattedTextField length = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		length.setBounds(50, 350, 100, 50);
 		f.add(length);
 		
@@ -47,7 +48,6 @@ public class startUp {
 			public void actionPerformed(ActionEvent e) {
 				int temp = Integer.parseInt(length.getText());
 				passwordGenClass gen = new passwordGenClass(incLowercase.isSelected(), incCapital.isSelected(), incNums.isSelected(), incSpecials.isSelected(), temp);
-				System.out.println(gen.toString());
 				gen.genPassword();
 			}
 		});
