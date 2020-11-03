@@ -14,6 +14,9 @@ import javax.swing.WindowConstants;
 public class startUp {
 
 	public static void startGen() {
+		/**
+		 * Setting up the JFrame here
+		 */
 		JFrame f = new JFrame();
 		
 		JLabel messageLabel = new JLabel("Your password will display here");
@@ -54,6 +57,9 @@ public class startUp {
 		f.add(genButton);
 		genButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				/**
+				 * Checks are done in here to make sure that length is between 1 and 20
+				 */
 				try {
 					int temp = Integer.parseInt(length.getText());
 					if(temp > 0 && temp < 21) {
@@ -63,12 +69,11 @@ public class startUp {
 						messageLabel.setText("Password length must be between 0 and 20");
 					}
 				}catch(Exception exception0) {
+					//This is called if the button to generate a password is pressed while empty 
 					messageLabel.setText("Enter a number");
 				}
 			}
 		});
-		
-		
 		f.setSize(400, 500);
 		f.setLayout(null); 
 		f.setVisible(true);

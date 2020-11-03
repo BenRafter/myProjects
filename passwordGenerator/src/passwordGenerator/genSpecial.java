@@ -4,6 +4,10 @@ import java.util.Random;
 
 public class genSpecial implements charGenerator{
 
+	/**
+	 * This class's genChar method returns a random special char
+	 */
+	
 	@Override
 	public char genChar() {
 		String alphabet = "!@#$%^&*()_+";

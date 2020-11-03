@@ -4,6 +4,9 @@ import java.util.Random;
 
 public class genLower implements charGenerator{
 
+	/**
+	 * This class's genChar method returns a random lower case letter
+	 */
 	@Override
 	public char genChar() {
 		Random r = new Random();

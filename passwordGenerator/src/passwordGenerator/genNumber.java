@@ -4,6 +4,10 @@ import java.util.Random;
 
 public class genNumber implements charGenerator{
 
+	/**
+	 * This class's genChar method returns a random number char
+	 */
+	
 	@Override
 	public char genChar() {
 		Random r = new Random();
