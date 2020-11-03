@@ -1,0 +1,1 @@
+To start, just open the passwordGen.jar file in the executables folder. To use, use the buttons to select your password options and the field to specify your password length, then press the button to generate your password.
