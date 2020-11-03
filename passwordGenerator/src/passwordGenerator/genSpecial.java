@@ -1,3 +1,4 @@
+//Created by Benjamin Rafter, github link: https://github.com/BenRafter/BenjaminRafterProjects
 package passwordGenerator;
 
 import java.util.Random;
