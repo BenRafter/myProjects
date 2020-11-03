@@ -1,6 +1,7 @@
 package passwordGenerator;
 
 import java.util.ArrayList;
+import java.util.Random;
 
 
 public class passwordGenClass {
@@ -17,6 +18,9 @@ public class passwordGenClass {
 		hasUppercase = upper;
 		hasNumbers = numbers;
 		hasSpecials = specials;
+		if(len <= 0) {
+			throw new IllegalArgumentException("Must be greater than 0");
+		}
 		pwordLength = len;
 		setgenList();
 	}
@@ -47,10 +51,14 @@ public class passwordGenClass {
 	
 	
 	public String genPassword() {
-		String ret = "";
-		for(int i = 0; i < genList.size(); i++) {
-			System.out.println(genList.get(i).genChar());
+		StringBuilder obj = new StringBuilder();
+		int temp = genList.size();
+		Random r = new Random();
+		while(pwordLength != 0) {
+			int x = r.nextInt(temp);
+			obj.append(genList.get(x).genChar());
+			pwordLength = pwordLength - 1;
 		}
-		return ret;
+		return obj.toString();
 	}
 }

@@ -16,6 +16,10 @@ public class startUp {
 	public static void startGen() {
 		JFrame f = new JFrame();
 		
+		JLabel messageLabel = new JLabel("Your password will display here");
+		messageLabel.setBounds(50, 50, 400, 50);
+		f.add(messageLabel);
+		
 		JLabel instructLabel = new JLabel("Select buttons that fit your password criteria");
 		instructLabel.setBounds(50, 100, 400, 50);
 		f.add(instructLabel);
@@ -33,9 +37,13 @@ public class startUp {
 		incCapital.setBounds(50, 250, 400, 50);
 		f.add(incCapital);
 		
-		JRadioButton incSpecials = new JRadioButton("Include special characters");
+		JRadioButton incSpecials = new JRadioButton("Include special characters (!@#$%^&*()_+)");
 		incSpecials.setBounds(50, 300, 400, 50);
 		f.add(incSpecials);
+		
+		JLabel lengthLabel = new JLabel("Password length (1 - 20)");
+		lengthLabel.setBounds(150, 309, 200, 100);
+		f.add(lengthLabel);
 		
 		JFormattedTextField length = new JFormattedTextField(NumberFormat.getIntegerInstance());
 		length.setBounds(50, 350, 100, 50);
@@ -46,9 +54,17 @@ public class startUp {
 		f.add(genButton);
 		genButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				int temp = Integer.parseInt(length.getText());
-				passwordGenClass gen = new passwordGenClass(incLowercase.isSelected(), incCapital.isSelected(), incNums.isSelected(), incSpecials.isSelected(), temp);
-				gen.genPassword();
+				try {
+					int temp = Integer.parseInt(length.getText());
+					if(temp > 0 && temp < 21) {
+						passwordGenClass gen = new passwordGenClass(incLowercase.isSelected(), incCapital.isSelected(), incNums.isSelected(), incSpecials.isSelected(), temp);
+						messageLabel.setText("Your password is " + gen.genPassword());
+					}else {
+						messageLabel.setText("Password length must be between 0 and 20");
+					}
+				}catch(Exception exception0) {
+					messageLabel.setText("Enter a number");
+				}
 			}
 		});
 		
